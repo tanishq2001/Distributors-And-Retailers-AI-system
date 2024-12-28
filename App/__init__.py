@@ -1,5 +1,6 @@
 from flask import Flask
 from app.models import db
+from app.views import views  # Import the blueprint
 
 def create_app():
     app = Flask(__name__)
@@ -7,4 +8,8 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
+    
+    # Register the blueprint
+    app.register_blueprint(views, url_prefix="/")
+    
     return app
