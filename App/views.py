@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.controllers import query_llama, get_products, add_to_cart
+from app.controllers import process_chat_query, get_products, add_to_cart
 
 views = Blueprint('views', __name__)
 
@@ -8,8 +8,9 @@ cart = []
 @views.route("/chat", methods=["POST"])
 def chat():
     user_message = request.json.get("message", "")
-    response = query_llama(user_message)
-    return jsonify({"response": response})
+    result = process_chat_query(user_message, cart)
+    return jsonify(result)
+
 
 @views.route("/products", methods=["GET"])
 def products():
