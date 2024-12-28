@@ -10,7 +10,7 @@ def seed_database():
     if not Product.query.first():
         products = [
             {"name": "Apple Juice", "description": "Fresh organic apple juice.", "price": 3.5, "stock": 100},
-            {"name": "Orange Juice", "description": "Pure organic orange juice.", "price": 4.0, "stock": 80},
+            {"name": "Orange Juice", "description": "Pure organic orange juice.", "price": 4.0, "stock": 80}
             # Add more products here
         ]
         for product in products:
